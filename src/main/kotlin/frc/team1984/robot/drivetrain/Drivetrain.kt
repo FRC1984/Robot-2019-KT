@@ -1,0 +1,68 @@
+package frc.team1984.robot.drivetrain
+
+import edu.wpi.first.wpilibj.DoubleSolenoid
+import edu.wpi.first.wpilibj.SpeedControllerGroup
+import edu.wpi.first.wpilibj.Talon
+import edu.wpi.first.wpilibj.command.Subsystem
+import edu.wpi.first.wpilibj.drive.DifferentialDrive
+import frc.team1984.lib.motion.pid.JawaDriveEncoder
+import frc.team1984.lib.motion.util.DTVals
+import frc.team1984.robot.RobotMap
+
+object Drivetrain : Subsystem() {
+    private val lT = Talon(RobotMap.LEFT_TALON_1)
+    private val lT2 = Talon(RobotMap.LEFT_TALON_2)
+    private val rT = Talon(RobotMap.RIGHT_TALON_1)
+    private val rT2 = Talon(RobotMap.RIGHT_TALON_2)
+
+    private val shifter = DoubleSolenoid(RobotMap.SHIFTER_DOUBLE_A, RobotMap.SHIFTER_DOUBLE_B)
+
+    private val l = SpeedControllerGroup(lT, lT2)
+    private val r = SpeedControllerGroup(rT, rT2)
+    private val drive = DifferentialDrive(l, r)
+    private val dtVals = DTVals(DriveConsts.WHEEL_RADIUS, DriveConsts.TICKS_PER_REV)
+
+    val lEnc = JawaDriveEncoder(RobotMap.L_DRIVE_ENC_ID,
+                                dtVals)
+
+    val rEnc = JawaDriveEncoder(RobotMap.L_DRIVE_ENC_ID,
+                                dtVals)
+
+    init {
+        reset()
+    }
+
+    override fun initDefaultCommand() {
+//        defaultCommand =
+    }
+
+    fun reset() {
+        stop()
+        shiftHigh() //Maybe change?
+    }
+
+    fun curvatureDrive(xSpeed: Double, zRotation: Double, isQuickTurn: Boolean) {
+        drive.curvatureDrive(xSpeed, zRotation, isQuickTurn)
+    }
+
+    fun arcadeDrive(xSpeed: Double, zRotation: Double) {
+        drive.arcadeDrive(xSpeed, zRotation)
+    }
+
+    fun set(l: Double, r: Double) {
+        this.l.set(l)
+        this.r.set(r)
+    }
+
+    fun stop() {
+        drive.arcadeDrive(0.0, 0.0)
+    }
+
+    fun shiftHigh() {
+        shifter.set(DoubleSolenoid.Value.kForward)
+    }
+
+    fun shiftLow() {
+        shifter.set(DoubleSolenoid.Value.kReverse)
+    }
+}

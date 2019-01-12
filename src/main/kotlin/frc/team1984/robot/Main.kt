@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+package frc.team1984.robot
+=======
 package frc.team0000.robot
+>>>>>>> 74a3b443bf36357d550f5c90e8789a25ad8db3f8
 
 import edu.wpi.first.wpilibj.RobotBase
 
