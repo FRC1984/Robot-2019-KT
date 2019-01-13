@@ -1,6 +1,7 @@
-package frc.team1984.robot
+package frc.team1984.robot.consts
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
+import frc.team1984.robot.Robot
 import frc.team1984.robot.drivetrain.DriveConsts
 
 object Consts {
@@ -38,8 +39,6 @@ object Consts {
     var cubeP = 10.0
     var cubeI = 0.0
     var cubeD = 0.0
-    var cubeAlignX = 50
-
 
     fun update() {
         DriveConsts.quickTurnThreshold = SmartDashboard.getNumber("Quick Turn Threshold", 0.2)

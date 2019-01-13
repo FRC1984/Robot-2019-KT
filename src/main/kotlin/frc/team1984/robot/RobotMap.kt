@@ -14,6 +14,8 @@ object RobotMap {
 
     const val CAT_DOUBLE_A = 2
     const val CAT_DOUBLE_B = 3
+    const val CAT_HOLDER_DOUBLE_A = 6
+    const val CAT_HOLDER_DOUBLE_B = 7
 
     const val SHIFTER_DOUBLE_A = 4
     const val SHIFTER_DOUBLE_B = 5

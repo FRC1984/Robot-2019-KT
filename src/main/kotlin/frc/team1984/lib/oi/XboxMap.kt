@@ -1,8 +1,8 @@
-package frc.team1984.robot
+package frc.team1984.lib.oi
 
-object XboxConsts {
+object XboxMap {
     // Joystick Deadband
-    const val DEAD_BAND = 0.15
+    const val DEAD_BAND = 0.1
 
     // Buttons
     enum class Button(val id: Int) {
@@ -42,8 +42,8 @@ object XboxConsts {
     }
 
     // Axis Inversion
-    const val INVERT_LEFT_X = true
+    const val INVERT_LEFT_X = false
     const val INVERT_LEFT_Y = false
-    const val INVERT_RIGHT_X = true
-    const val INVERT_RIGHT_Y = true
+    const val INVERT_RIGHT_X = false
+    const val INVERT_RIGHT_Y = false
 }

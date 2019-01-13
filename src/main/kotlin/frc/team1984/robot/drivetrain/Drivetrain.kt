@@ -15,7 +15,7 @@ object Drivetrain : Subsystem() {
     private val rT = Talon(RobotMap.RIGHT_TALON_1)
     private val rT2 = Talon(RobotMap.RIGHT_TALON_2)
 
-    private val shifter = DoubleSolenoid(RobotMap.SHIFTER_DOUBLE_A, RobotMap.SHIFTER_DOUBLE_B)
+    private var shifter = DoubleSolenoid(RobotMap.SHIFTER_DOUBLE_A, RobotMap.SHIFTER_DOUBLE_B)
 
     private val l = SpeedControllerGroup(lT, lT2)
     private val r = SpeedControllerGroup(rT, rT2)
@@ -25,7 +25,7 @@ object Drivetrain : Subsystem() {
     val lEnc = JawaDriveEncoder(RobotMap.L_DRIVE_ENC_ID,
                                 dtVals)
 
-    val rEnc = JawaDriveEncoder(RobotMap.L_DRIVE_ENC_ID,
+    val rEnc = JawaDriveEncoder(RobotMap.R_DRIVE_ENC_ID,
                                 dtVals)
 
     init {
@@ -38,7 +38,7 @@ object Drivetrain : Subsystem() {
 
     fun reset() {
         stop()
-        shiftHigh() //Maybe change?
+        shiftHigh() //Maybe low?
     }
 
     fun curvatureDrive(xSpeed: Double, zRotation: Double, isQuickTurn: Boolean) {
@@ -46,12 +46,16 @@ object Drivetrain : Subsystem() {
     }
 
     fun arcadeDrive(xSpeed: Double, zRotation: Double) {
-        drive.arcadeDrive(xSpeed, zRotation)
+        drive.arcadeDrive(xSpeed, zRotation, false)
     }
 
     fun set(l: Double, r: Double) {
         this.l.set(l)
         this.r.set(r)
+    }
+
+    fun getAvgSpeed(): Double {
+        return (lEnc.getVel() + rEnc.getVel()) / 2
     }
 
     fun stop() {

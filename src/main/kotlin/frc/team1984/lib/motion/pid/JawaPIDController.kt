@@ -1,7 +1,7 @@
 package frc.team1984.lib.motion.pid
 
 import frc.team1984.lib.motion.util.PIDVals
-import frc.team1984.robot.Consts
+import frc.team1984.robot.consts.Consts
 import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
 
