@@ -3,6 +3,10 @@ package frc.team1984.robot
 import edu.wpi.first.wpilibj.TimedRobot
 import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
+import frc.team1984.robot.catapult.Catapult
+import frc.team1984.robot.drivetrain.Drivetrain
+import frc.team1984.robot.drumbrake.DrumBrake
 
 class Robot : TimedRobot() {
     companion object {
@@ -14,10 +18,11 @@ class Robot : TimedRobot() {
         val driverStation: DriverStation = DriverStation.getInstance()
         val scheduler: Scheduler = Scheduler.getInstance()
         val prefs: Preferences = Preferences.getInstance()
+        private val subsystemList = listOf(Drivetrain, Catapult, DrumBrake)
     }
 
     override fun robotInit() {
-
+        subsystemList.forEach { SmartDashboard.putData(it) }
     }
 
     override fun robotPeriodic() {
@@ -33,7 +38,7 @@ class Robot : TimedRobot() {
     }
 
     override fun teleopInit() {
-
+        scheduler.removeAll()
     }
 
     override fun teleopPeriodic() {

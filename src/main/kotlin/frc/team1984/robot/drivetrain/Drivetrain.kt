@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.command.Subsystem
 import edu.wpi.first.wpilibj.drive.DifferentialDrive
 import frc.team1984.lib.motion.pid.JawaDriveEncoder
 import frc.team1984.lib.motion.util.DTVals
+import frc.team1984.lib.oi.XboxMap
+import frc.team1984.robot.OI
 import frc.team1984.robot.RobotMap
 
 object Drivetrain : Subsystem() {
@@ -33,7 +35,11 @@ object Drivetrain : Subsystem() {
     }
 
     override fun initDefaultCommand() {
-//        defaultCommand =
+        defaultCommand = CurvatureDriveCmd(
+                            OI.Con1.getAxis(XboxMap.Axis.LEFT_Y),
+                            OI.Con1.getAxis(XboxMap.Axis.RIGHT_X),
+                            getAvgSpeed() > DriveConsts.quickTurnThreshold)
+
     }
 
     fun reset() {
