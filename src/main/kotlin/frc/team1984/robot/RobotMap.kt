@@ -7,6 +7,7 @@ object RobotMap {
     const val LEFT_TALON_2 = 1
     const val RIGHT_TALON_1 = 2
     const val RIGHT_TALON_2 = 3
+    const val INTAKE_MOTOR = 4
 
     //CAN
     const val HATCH_DOUBLE_A = 0

@@ -1,6 +1,7 @@
 package frc.team1984.robot
 
 import frc.team1984.lib.oi.JawaXboxController
+import frc.team1984.lib.oi.XboxMap
 import frc.team1984.lib.util.commandify
 import frc.team1984.robot.catapult.Catapult
 import frc.team1984.robot.drivetrain.Drivetrain
@@ -22,5 +23,10 @@ object OI {
 
         //DrumBrake
         Con1.xButton.whenPressed(commandify { DrumBrake.holding = false })
+
+        //Intake
+        Con1.lTrigger.whileHeld(commandify { Catapult.intakeIn(Con1.getAxis(XboxMap.Axis.LT))})
+        Con1.rTrigger.whileHeld(commandify { Catapult.intakeOut(Con1.getAxis(XboxMap.Axis.RT))})
+        print("OI Initialized")
     }
 }

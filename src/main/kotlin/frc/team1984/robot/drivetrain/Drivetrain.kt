@@ -5,8 +5,6 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup
 import edu.wpi.first.wpilibj.Talon
 import edu.wpi.first.wpilibj.command.Subsystem
 import edu.wpi.first.wpilibj.drive.DifferentialDrive
-import frc.team1984.lib.motion.pid.JawaDriveEncoder
-import frc.team1984.lib.motion.util.DTVals
 import frc.team1984.lib.oi.XboxMap
 import frc.team1984.robot.OI
 import frc.team1984.robot.RobotMap
@@ -22,13 +20,13 @@ object Drivetrain : Subsystem() {
     private val l = SpeedControllerGroup(lT, lT2)
     private val r = SpeedControllerGroup(rT, rT2)
     private val drive = DifferentialDrive(l, r)
-    private val dtVals = DTVals(DriveConsts.WHEEL_RADIUS, DriveConsts.TICKS_PER_REV)
+/*    private val dtVals = DTVals(DriveConsts.WHEEL_RADIUS, DriveConsts.TICKS_PER_REV)
 
     val lEnc = JawaDriveEncoder(RobotMap.L_DRIVE_ENC_ID,
                                 dtVals)
 
     val rEnc = JawaDriveEncoder(RobotMap.R_DRIVE_ENC_ID,
-                                dtVals)
+                                dtVals)*/
 
     init {
         reset()
@@ -61,7 +59,8 @@ object Drivetrain : Subsystem() {
     }
 
     fun getAvgSpeed(): Double {
-        return (lEnc.getVel() + rEnc.getVel()) / 2
+        //return (lEnc.getVel() + rEnc.getVel()) / 2
+        return 0.0
     }
 
     fun stop() {

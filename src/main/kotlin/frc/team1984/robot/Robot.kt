@@ -22,6 +22,8 @@ class Robot : TimedRobot() {
     }
 
     override fun robotInit() {
+        OI
+
         subsystemList.forEach { SmartDashboard.putData(it) }
     }
 
