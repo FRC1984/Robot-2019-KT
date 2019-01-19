@@ -3,10 +3,10 @@ package frc.team1984.robot
 object RobotMap {
 
     //PWM
-    const val LEFT_TALON_1 = 0
-    const val LEFT_TALON_2 = 1
-    const val RIGHT_TALON_1 = 2
-    const val RIGHT_TALON_2 = 3
+    const val LEFT_TALON_1 = 2
+    const val LEFT_TALON_2 = 3
+    const val RIGHT_TALON_1 = 0
+    const val RIGHT_TALON_2 = 1
     const val INTAKE_MOTOR = 4
 
     //CAN

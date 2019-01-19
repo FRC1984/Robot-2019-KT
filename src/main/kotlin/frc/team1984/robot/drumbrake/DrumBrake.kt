@@ -6,14 +6,19 @@ import frc.team1984.robot.RobotMap
 
 object DrumBrake : Subsystem() {
     private val actuator = DoubleSolenoid(RobotMap.HATCH_DOUBLE_A, RobotMap.HATCH_DOUBLE_B)
-    var holding = false
+
+    var isHold = true
         set(input) {
-            if(input) field xor true else field = false
-            if (field) {
+            field = input
+
+            if(field) {
                 actuator.set(DoubleSolenoid.Value.kForward)
             } else {
                 actuator.set(DoubleSolenoid.Value.kReverse)
             }
         }
-    override fun initDefaultCommand() { }
+
+    override fun initDefaultCommand() {
+        defaultCommand = DrumBrakeCmd()
+    }
 }

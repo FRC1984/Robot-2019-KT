@@ -2,15 +2,15 @@ package frc.team1984.robot.catapult
 
 import edu.wpi.first.wpilibj.command.Command
 
-class IntakeRunCmd(val speedFun: () -> Double) : Command() {
+class IntakeWheelCmd(val speedFun: () -> Double) : Command() {
     init {
-        this.requires(Catapult)
+        this.requires(Intake)
         this.isInterruptible = true
     }
 
-    override fun execute() = Catapult.intake(speedFun())
+    override fun execute() = Intake.intake(speedFun())
 
     override fun  isFinished() = false //If mode not teleop?
 
-    override fun end() = Catapult.intake(0.0)
+    override fun end() = Intake.intake(0.0)
 }

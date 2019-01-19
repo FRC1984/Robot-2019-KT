@@ -1,11 +1,10 @@
 package frc.team1984.robot
 
 import frc.team1984.lib.oi.JawaXboxController
-import frc.team1984.lib.oi.XboxMap
 import frc.team1984.lib.util.commandify
-import frc.team1984.robot.catapult.Catapult
+import frc.team1984.robot.catapult.IntakeMoveCmd
 import frc.team1984.robot.drivetrain.Drivetrain
-import frc.team1984.robot.drumbrake.DrumBrake
+import frc.team1984.robot.drumbrake.DrumBrakeCmd
 
 object OI {
     val Con1 = JawaXboxController(0)
@@ -17,16 +16,13 @@ object OI {
         Con1.lbButton.whenPressed(commandify { Drivetrain.shiftLow() })
         Con1.rbButton.whenPressed(commandify { Drivetrain.shiftHigh() })
 
-        //Catapult
-        Con1.bButton.whenPressed(commandify { Catapult.launch = true }) //Setting launch to true toggles launch between true/false
-        Con1.yButton.whenPressed(commandify { Catapult.safe = false }) //Setting safe to false toggles safe between true/false
+        //Intake
+        Con1.bButton.toggleWhenPressed(IntakeMoveCmd())
 
         //DrumBrake
-        Con1.xButton.whenPressed(commandify { DrumBrake.holding = false })
+        Con1.aButton.toggleWhenPressed(DrumBrakeCmd())
 
         //Intake
-        Con1.lTrigger.whileHeld(commandify { Catapult.intakeIn(Con1.getAxis(XboxMap.Axis.LT))})
-        Con1.rTrigger.whileHeld(commandify { Catapult.intakeOut(Con1.getAxis(XboxMap.Axis.RT))})
         print("OI Initialized")
     }
 }

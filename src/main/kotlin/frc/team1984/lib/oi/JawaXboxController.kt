@@ -39,4 +39,5 @@ class JawaXboxController(port: Int) : XboxController(port) {
 
     fun getAxis(axis: XboxMap.Axis, inverted: Boolean = false) =
             applyDeadband(this.getRawAxis(axis.id) * if (inverted) -1 else 1, XboxMap.DEAD_BAND)
+
 }

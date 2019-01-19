@@ -34,9 +34,9 @@ object Drivetrain : Subsystem() {
 
     override fun initDefaultCommand() {
         defaultCommand = CurvatureDriveCmd(
-                            OI.Con1.getAxis(XboxMap.Axis.LEFT_Y),
-                            OI.Con1.getAxis(XboxMap.Axis.RIGHT_X),
-                            getAvgSpeed() > DriveConsts.quickTurnThreshold)
+                {OI.Con1.getAxis(XboxMap.Axis.LEFT_Y)},
+                {-OI.Con1.getAxis(XboxMap.Axis.RIGHT_X)},
+                {getAvgSpeed() == 0.0})
 
     }
 
