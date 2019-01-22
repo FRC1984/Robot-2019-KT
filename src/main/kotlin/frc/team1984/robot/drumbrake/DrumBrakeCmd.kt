@@ -12,6 +12,6 @@ class DrumBrakeCmd : Command() {
     override fun execute() {
         DrumBrake.isHold = true
     }
-    override fun isFinished() = !Intake.isOut
-    override fun end() { DrumBrake.isHold xor false }
+    override fun isFinished() = false
+    override fun end() { DrumBrake.isHold = false }
 }

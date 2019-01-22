@@ -33,11 +33,9 @@ object Drivetrain : Subsystem() {
     }
 
     override fun initDefaultCommand() {
-        defaultCommand = CurvatureDriveCmd(
+        defaultCommand = ArcadeDriveCmd(
                 {OI.Con1.getAxis(XboxMap.Axis.LEFT_Y)},
-                {-OI.Con1.getAxis(XboxMap.Axis.RIGHT_X)},
-                {getAvgSpeed() == 0.0})
-
+                {-OI.Con1.getAxis(XboxMap.Axis.RIGHT_X)})
     }
 
     fun reset() {

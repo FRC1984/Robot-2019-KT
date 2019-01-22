@@ -13,7 +13,7 @@ object Intake : Subsystem() {
     private val safety = DoubleSolenoid(RobotMap.CAT_HOLDER_DOUBLE_A, RobotMap.CAT_HOLDER_DOUBLE_B)
     private val motor = Spark(RobotMap.INTAKE_MOTOR)
 
-    var isOut = false
+    var isOut = true
         set(input) {
             field = input
 

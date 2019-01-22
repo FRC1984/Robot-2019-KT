@@ -18,7 +18,5 @@ object DrumBrake : Subsystem() {
             }
         }
 
-    override fun initDefaultCommand() {
-        defaultCommand = DrumBrakeCmd()
-    }
+    override fun initDefaultCommand() { }
 }
