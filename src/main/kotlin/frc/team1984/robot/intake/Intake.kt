@@ -1,4 +1,4 @@
-package frc.team1984.robot.catapult
+package frc.team1984.robot.intake
 
 import edu.wpi.first.wpilibj.DoubleSolenoid
 import edu.wpi.first.wpilibj.Spark
@@ -9,8 +9,7 @@ import frc.team1984.robot.RobotMap
 
 object Intake : Subsystem() {
 
-    private val actuator = DoubleSolenoid(RobotMap.CAT_DOUBLE_A, RobotMap.CAT_DOUBLE_B)
-    private val safety = DoubleSolenoid(RobotMap.CAT_HOLDER_DOUBLE_A, RobotMap.CAT_HOLDER_DOUBLE_B)
+    private val actuator = DoubleSolenoid(RobotMap.INTAKE_DOUBLE_A, RobotMap.INTAKE_DOUBLE_B)
     private val motor = Spark(RobotMap.INTAKE_MOTOR)
 
     var isOut = true

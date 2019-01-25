@@ -1,5 +1,6 @@
 package frc.team1984.robot.drivetrain
 
+import frc.team1984.lib.motion.util.DTVals
 import frc.team1984.lib.motion.util.PIDVAVals
 import frc.team1984.lib.motion.util.PIDVals
 
@@ -25,5 +26,10 @@ object DriveConsts {
             kP = 0.3,
             kI = 0.0,
             kD = 0.0
+    )
+
+    val kDTVals = DTVals(
+            wheelRad = WHEEL_RADIUS,
+            encTickPerRev = TICKS_PER_REV
     )
 }

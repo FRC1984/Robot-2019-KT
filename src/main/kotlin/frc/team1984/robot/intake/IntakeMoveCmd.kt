@@ -1,4 +1,4 @@
-package frc.team1984.robot.catapult
+package frc.team1984.robot.intake
 
 import edu.wpi.first.wpilibj.command.Command
 

@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.TimedRobot
 import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
-import frc.team1984.robot.catapult.Intake
+import frc.team1984.robot.intake.Intake
 import frc.team1984.robot.drivetrain.Drivetrain
 
 class Robot : TimedRobot() {

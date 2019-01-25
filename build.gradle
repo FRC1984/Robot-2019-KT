@@ -50,6 +50,7 @@ dependencies {
     // We need to add the Kotlin stdlib in order to use most Kotlin language features.
     compile "org.jetbrains.kotlin:kotlin-stdlib"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')

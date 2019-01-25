@@ -2,23 +2,27 @@ package frc.team1984.robot.drivetrain
 
 import edu.wpi.first.wpilibj.DoubleSolenoid
 import edu.wpi.first.wpilibj.SpeedControllerGroup
-import edu.wpi.first.wpilibj.Talon
-import edu.wpi.first.wpilibj.command.Subsystem
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
 import edu.wpi.first.wpilibj.drive.DifferentialDrive
+import frc.team1984.lib.Jawasystem
+import frc.team1984.lib.motion.pid.JawaDriveEncoder
 import frc.team1984.lib.oi.XboxMap
 import frc.team1984.robot.OI
 import frc.team1984.robot.RobotMap
 
-object Drivetrain : Subsystem() {
-    private val lT = Talon(RobotMap.LEFT_TALON_1)
-    private val lT2 = Talon(RobotMap.LEFT_TALON_2)
-    private val rT = Talon(RobotMap.RIGHT_TALON_1)
-    private val rT2 = Talon(RobotMap.RIGHT_TALON_2)
+object Drivetrain : Jawasystem() {
+
+
+    private var lSRX = JawaDriveEncoder(RobotMap.LEFT_SRX_ID, DriveConsts.kDTVals)
+    private var lSPX = WPI_VictorSPX(RobotMap.LEFT_SPX_ID)
+    private var rSRX = JawaDriveEncoder(RobotMap.RIGHT_SRX_ID, DriveConsts.kDTVals)
+    private var rSPX = WPI_VictorSPX(RobotMap.RIGHT_SPX_ID)
 
     private var shifter = DoubleSolenoid(RobotMap.SHIFTER_DOUBLE_A, RobotMap.SHIFTER_DOUBLE_B)
 
-    private val l = SpeedControllerGroup(lT, lT2)
-    private val r = SpeedControllerGroup(rT, rT2)
+    private val l = SpeedControllerGroup(lSRX, lSPX)
+    private val r = SpeedControllerGroup(rSRX, rSPX)
     private val drive = DifferentialDrive(l, r)
 /*    private val dtVals = DTVals(DriveConsts.WHEEL_RADIUS, DriveConsts.TICKS_PER_REV)
 
@@ -38,7 +42,7 @@ object Drivetrain : Subsystem() {
                 {-OI.Con1.getAxis(XboxMap.Axis.RIGHT_X)})
     }
 
-    fun reset() {
+    override fun reset() {
         stop()
         shiftHigh() //Maybe low?
     }
@@ -56,10 +60,7 @@ object Drivetrain : Subsystem() {
         this.r.set(r)
     }
 
-    fun getAvgSpeed(): Double {
-        //return (lEnc.getVel() + rEnc.getVel()) / 2
-        return 0.0
-    }
+    fun getAvgSpeed() = (lSRX.getVel() + rSRX.getVel()) / 2
 
     fun stop() {
         drive.arcadeDrive(0.0, 0.0)
