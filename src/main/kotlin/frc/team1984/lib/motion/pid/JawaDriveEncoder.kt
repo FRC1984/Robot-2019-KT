@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX
 import frc.team1984.lib.motion.util.DTVals
 
 class JawaDriveEncoder(deviceNumber: Int, dtVals: DTVals) : WPI_TalonSRX(deviceNumber) {
+
     private var invert = 1 // Only changed if needed
 
     private val r = dtVals.wheelRad

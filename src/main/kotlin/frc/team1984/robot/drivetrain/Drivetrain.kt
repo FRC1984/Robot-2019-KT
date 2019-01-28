@@ -13,17 +13,17 @@ import frc.team1984.robot.RobotMap
 
 object Drivetrain : Jawasystem() {
 
+        private var lSRX = JawaDriveEncoder(RobotMap.LEFT_SRX_ID, DriveConsts.kDTVals)
+        private var lSPX = WPI_VictorSPX(RobotMap.LEFT_SPX_ID)
+        private var rSRX = JawaDriveEncoder(RobotMap.RIGHT_SRX_ID, DriveConsts.kDTVals)
+        private var rSPX = WPI_VictorSPX(RobotMap.RIGHT_SPX_ID)
 
-    private var lSRX = JawaDriveEncoder(RobotMap.LEFT_SRX_ID, DriveConsts.kDTVals)
-    private var lSPX = WPI_VictorSPX(RobotMap.LEFT_SPX_ID)
-    private var rSRX = JawaDriveEncoder(RobotMap.RIGHT_SRX_ID, DriveConsts.kDTVals)
-    private var rSPX = WPI_VictorSPX(RobotMap.RIGHT_SPX_ID)
+        private var shifter = DoubleSolenoid(RobotMap.SHIFTER_DOUBLE_A, RobotMap.SHIFTER_DOUBLE_B)
 
-    private var shifter = DoubleSolenoid(RobotMap.SHIFTER_DOUBLE_A, RobotMap.SHIFTER_DOUBLE_B)
+        private val l = SpeedControllerGroup(lSRX, lSPX)
+        private val r = SpeedControllerGroup(rSRX, rSPX)
+        private val drive = DifferentialDrive(l, r)
 
-    private val l = SpeedControllerGroup(lSRX, lSPX)
-    private val r = SpeedControllerGroup(rSRX, rSPX)
-    private val drive = DifferentialDrive(l, r)
 /*    private val dtVals = DTVals(DriveConsts.WHEEL_RADIUS, DriveConsts.TICKS_PER_REV)
 
     val lEnc = JawaDriveEncoder(RobotMap.L_DRIVE_ENC_ID,
@@ -60,7 +60,9 @@ object Drivetrain : Jawasystem() {
         this.r.set(r)
     }
 
-    fun getAvgSpeed() = (lSRX.getVel() + rSRX.getVel()) / 2
+    fun getAvgSpeed(): Double {
+        return (lSRX.getVel() + rSRX.getVel()) / 2
+    }
 
     fun stop() {
         drive.arcadeDrive(0.0, 0.0)
