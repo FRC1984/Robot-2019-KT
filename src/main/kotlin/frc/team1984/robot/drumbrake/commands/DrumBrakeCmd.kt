@@ -1,6 +1,7 @@
-package frc.team1984.robot.drumbrake
+package frc.team1984.robot.drumbrake.commands
 
 import edu.wpi.first.wpilibj.command.Command
+import frc.team1984.robot.drumbrake.DrumBrake
 
 class DrumBrakeCmd : Command() {
     init {

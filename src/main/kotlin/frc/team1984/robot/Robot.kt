@@ -54,6 +54,6 @@ class Robot : TimedRobot() {
     }
 
     override fun testPeriodic() {
-        Intake.run(OI.Con1.getAxis(XboxMap.Axis.LEFT_Y), if (Intake.hasBall.get()) OI.Con1.getAxis(XboxMap.Axis.RIGHT_Y) else 0.0)
+        Intake.run(OI.Con1.getAxis(XboxMap.Axis.LEFT_Y), if (Intake.hasBall) OI.Con1.getAxis(XboxMap.Axis.RIGHT_Y) else 0.0)
     }
 }

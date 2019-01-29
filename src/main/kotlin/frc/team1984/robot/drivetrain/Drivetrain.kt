@@ -2,7 +2,6 @@ package frc.team1984.robot.drivetrain
 
 import edu.wpi.first.wpilibj.DoubleSolenoid
 import edu.wpi.first.wpilibj.SpeedControllerGroup
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
 import edu.wpi.first.wpilibj.drive.DifferentialDrive
 import frc.team1984.lib.Jawasystem
@@ -10,6 +9,7 @@ import frc.team1984.lib.motion.pid.JawaDriveEncoder
 import frc.team1984.lib.oi.XboxMap
 import frc.team1984.robot.OI
 import frc.team1984.robot.RobotMap
+import frc.team1984.robot.drivetrain.commands.ArcadeDriveCmd
 
 object Drivetrain : Jawasystem() {
 
@@ -38,8 +38,8 @@ object Drivetrain : Jawasystem() {
 
     override fun initDefaultCommand() {
         defaultCommand = ArcadeDriveCmd(
-                {OI.Con1.getAxis(XboxMap.Axis.LEFT_Y)},
-                {-OI.Con1.getAxis(XboxMap.Axis.RIGHT_X)})
+                { OI.Con1.getAxis(XboxMap.Axis.LEFT_Y) },
+                { -OI.Con1.getAxis(XboxMap.Axis.RIGHT_X) })
     }
 
     override fun reset() {

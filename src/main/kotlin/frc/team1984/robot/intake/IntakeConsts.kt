@@ -1,4 +1,4 @@
-package frc.team1984.robot.consts
+package frc.team1984.robot.intake
 
 object IntakeConsts {
     const val FRONT_INTAKING_SPEED = 1.0

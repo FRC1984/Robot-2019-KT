@@ -49,7 +49,7 @@ object Intake : Jawasystem() {
 
     enum class State {
         INTAKE,
-        EJECTHIGH,
-        EJECTLOW
+        SHOOTHIGH,
+        SHOOTLOW
     }
 }
