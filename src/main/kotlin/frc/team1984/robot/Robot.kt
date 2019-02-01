@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import frc.team1984.lib.oi.XboxMap
+import frc.team1984.robot.belt.Belt
 import frc.team1984.robot.intake.Intake
 import frc.team1984.robot.drivetrain.Drivetrain
 import frc.team1984.robot.drumbrake.DrumBrake
@@ -13,7 +14,7 @@ class Robot : TimedRobot() {
     companion object {
         val driverStation: DriverStation = DriverStation.getInstance()
         val scheduler: Scheduler = Scheduler.getInstance()
-        private val subsystemList = listOf(Drivetrain, Intake, DrumBrake)
+        private val subsystemList = listOf(Drivetrain, Intake, DrumBrake, Belt)
     }
 
     override fun robotInit() {
@@ -35,9 +36,12 @@ class Robot : TimedRobot() {
 
     override fun teleopInit() {
         scheduler.removeAll()
+        RobotMap.pressure.isEnabled = true
+        RobotMap.pressure.run()
     }
 
     override fun teleopPeriodic() {
+        OI.Comp.start()
         print("some gay shit")
     }
 

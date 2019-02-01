@@ -1,5 +1,7 @@
 package frc.team1984.robot
 
+import frc.team1984.lib.sensors.PressureSwitch
+
 object RobotMap {
 
     //PWM
@@ -7,6 +9,7 @@ object RobotMap {
     const val INTAKE_MOTOR_2 = 1
     //Relay
     const val BELT_MOTOR = 0
+    const val PRESSURE_SWITCH = 1
 
     //CAN
     const val LEFT_SRX_ID = 2
@@ -23,4 +26,7 @@ object RobotMap {
 
     const val SHIFTER_DOUBLE_A = 4
     const val SHIFTER_DOUBLE_B = 5
-}
+
+    val pressure = PressureSwitch(PRESSURE_SWITCH)
+
+    }

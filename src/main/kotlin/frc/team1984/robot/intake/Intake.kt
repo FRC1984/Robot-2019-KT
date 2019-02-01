@@ -19,11 +19,11 @@ object Intake : Jawasystem() {
     var wants = State.INTAKE
     var hasBall = false
         get() = !ballSwitch.get()
-    var setOut = true
+    var setOut = false
         set(input) {
             field = input
 
-            if(!field) {
+            if(field) {
                 actuator.set(DoubleSolenoid.Value.kForward)
             } else {
                 actuator.set(DoubleSolenoid.Value.kReverse)

@@ -17,9 +17,7 @@ class ChooseShootCmd : ConditionalCommand(ShootHigh(), ShootLow()) {
             Intake.State.SHOOTLOW -> {
                 return false
             }
-            else -> {
-                this.cancel()
-            }
+            else -> { }
         }
         return false
     }

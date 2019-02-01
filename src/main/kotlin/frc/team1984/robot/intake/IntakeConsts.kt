@@ -8,5 +8,5 @@ object IntakeConsts {
     const val BACK_SHOOTLOW_SPEED = 1.0
 
     const val FRONT_SHOOTHIGH_SPEED = 1.0
-    const val BACK_SHOOTHIGH_SPEED = 1.0
+    const val BACK_SHOOTHIGH_SPEED = -1.0
 }

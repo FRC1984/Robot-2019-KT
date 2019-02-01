@@ -10,6 +10,6 @@ import frc.team1984.robot.intake.Intake
 
 class BeltCmd : Command("BeltCmd") {
     override fun execute() = if(Intake.wants == Intake.State.SHOOTHIGH) forward() else reverse()
-    override fun isFinished(): Boolean = ballAtTop
+    override fun isFinished() = ballAtTop()
     override fun end() =  stop()
 }
