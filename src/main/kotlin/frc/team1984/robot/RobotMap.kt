@@ -1,5 +1,8 @@
 package frc.team1984.robot
 
+import edu.wpi.first.wpilibj.DriverStation
+import edu.wpi.first.wpilibj.RobotController
+import frc.team1984.lib.sensors.CurrentManager
 import frc.team1984.lib.sensors.PressureSwitch
 
 object RobotMap {
@@ -27,6 +30,8 @@ object RobotMap {
     const val SHIFTER_DOUBLE_A = 4
     const val SHIFTER_DOUBLE_B = 5
 
+    private const val BROWNOUT_MAX_THRESHOLD = 11.0
     val pressure = PressureSwitch(PRESSURE_SWITCH)
+    val pressureManager = CurrentManager({RobotController.getBatteryVoltage()}, BROWNOUT_MAX_THRESHOLD, 1500, pressure)
 
     }
