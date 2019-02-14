@@ -2,9 +2,11 @@ package frc.team1984.robot.intake
 
 import edu.wpi.first.wpilibj.DigitalInput
 import edu.wpi.first.wpilibj.DoubleSolenoid
+import edu.wpi.first.wpilibj.RobotController
 import edu.wpi.first.wpilibj.Spark
 import frc.team1984.lib.Jawasystem
 import frc.team1984.lib.oi.XboxMap
+import frc.team1984.lib.sensors.CurrentManager
 import frc.team1984.robot.OI
 import frc.team1984.robot.RobotMap
 
@@ -15,6 +17,7 @@ object Intake : Jawasystem() {
     private val backMotor = Spark(RobotMap.INTAKE_MOTOR_2)
     private val ballSwitch = DigitalInput(0)
     private val intakeSwitch = DigitalInput(1)
+    private val intakeCurrentMgr = CurrentManager({ RobotController.getBatteryVoltage()}, 7.5, 100, this)
 
     var wants = State.INTAKE
     var hasBall = false
@@ -46,6 +49,8 @@ object Intake : Jawasystem() {
     fun stop() = run(0.0, 0.0)
 
     fun getIntakeSpeed() = OI.Con1.getAxis(XboxMap.Axis.LT) - OI.Con1.getAxis(XboxMap.Axis.RT)
+
+    override fun brownOut() = stop()
 
     enum class State {
         INTAKE,

@@ -4,6 +4,6 @@ import edu.wpi.first.wpilibj.command.Subsystem
 
 abstract class Jawasystem : Subsystem() {
     abstract fun reset()
-    abstract fun brownOut()
+    fun brownOut() {}
     override fun initDefaultCommand() { }
 }

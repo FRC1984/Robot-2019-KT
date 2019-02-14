@@ -10,9 +10,10 @@ object RobotMap {
     //PWM
     const val INTAKE_MOTOR = 0
     const val INTAKE_MOTOR_2 = 1
+    const val BELT_MOTOR = 2
+
     //Relay
-    const val BELT_MOTOR = 0
-    const val PRESSURE_SWITCH = 1
+    const val PRESSURE_SWITCH = 0
 
     //CAN
     const val LEFT_SRX_ID = 2
@@ -33,5 +34,6 @@ object RobotMap {
     private const val BROWNOUT_MAX_THRESHOLD = 11.0
     val pressure = PressureSwitch(PRESSURE_SWITCH)
     val pressureManager = CurrentManager({RobotController.getBatteryVoltage()}, BROWNOUT_MAX_THRESHOLD, 1500, pressure)
+
 
     }

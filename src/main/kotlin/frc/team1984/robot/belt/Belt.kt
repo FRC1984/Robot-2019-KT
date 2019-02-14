@@ -2,12 +2,13 @@ package frc.team1984.robot.belt
 
 import edu.wpi.first.wpilibj.DigitalInput
 import edu.wpi.first.wpilibj.Relay
+import edu.wpi.first.wpilibj.Spark
 import frc.team1984.lib.Jawasystem
 import frc.team1984.robot.RobotMap
 import frc.team1984.robot.belt.commands.ManualBeltCmd
 
 object Belt : Jawasystem() {
-    private val motor = Relay(RobotMap.BELT_MOTOR) //Spike gang
+    private val motor = Spark(RobotMap.BELT_MOTOR) //Spike gang
     private val dio = DigitalInput(2)
 
     var ballAtTop = {!dio.get()}
@@ -18,9 +19,9 @@ object Belt : Jawasystem() {
 
     override fun reset() { stop() }
 
-    fun forward() = motor.set(Relay.Value.kForward)
+    fun forward() = motor.set(1.0)
 
-    fun reverse() = motor.set(Relay.Value.kReverse)
+    fun reverse() = motor.set(-1.0)
 
-    fun stop() { motor.set(Relay.Value.kOff) }
+    fun stop() { motor.set(0.0) }
 }
