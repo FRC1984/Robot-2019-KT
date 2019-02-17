@@ -8,7 +8,7 @@ import frc.team1984.robot.intake.Intake
 class BeltShootCmd : Command() {
     init {
         this.requires(Belt)
-
+        this.isInterruptible = true
     }
 
     override fun execute() = if(Intake.wants == Intake.State.SHOOTHIGH) Belt.forward() else Belt.reverse()

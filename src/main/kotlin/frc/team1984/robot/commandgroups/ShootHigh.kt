@@ -10,10 +10,8 @@ import frc.team1984.robot.intake.commands.RunIntakeCmd
 class ShootHigh() : CommandGroup() {
     init {
         this.requires(Intake)
-        this.requires(Belt)
-
-        addParallel(RunIntakeCmd(IntakeConsts.FRONT_SHOOTHIGH_SPEED, IntakeConsts.BACK_SHOOTHIGH_SPEED))
-        addSequential(BeltCmd())
+        addParallel(RunIntakeCmd(IntakeConsts.FRONT_SHOOTHIGH_SPEED, IntakeConsts.BACK_SHOOTHIGH_SPEED, true))
+//        addSequential(BeltCmd())
     }
 
 

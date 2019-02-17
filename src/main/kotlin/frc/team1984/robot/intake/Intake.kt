@@ -1,9 +1,6 @@
 package frc.team1984.robot.intake
 
-import edu.wpi.first.wpilibj.DigitalInput
-import edu.wpi.first.wpilibj.DoubleSolenoid
-import edu.wpi.first.wpilibj.RobotController
-import edu.wpi.first.wpilibj.Spark
+import edu.wpi.first.wpilibj.*
 import frc.team1984.lib.Jawasystem
 import frc.team1984.lib.oi.XboxMap
 import frc.team1984.lib.sensors.CurrentManager
@@ -12,11 +9,11 @@ import frc.team1984.robot.RobotMap
 
 object Intake : Jawasystem() {
 
-    private val actuator = DoubleSolenoid(RobotMap.INTAKE_DOUBLE_A, RobotMap.INTAKE_DOUBLE_B)
+    private val actuator = Solenoid(RobotMap.INTAKE_SOLENOID)
     private val frontMotor = Spark(RobotMap.INTAKE_MOTOR)
     private val backMotor = Spark(RobotMap.INTAKE_MOTOR_2)
     private val ballSwitch = DigitalInput(0)
-    private val intakeSwitch = DigitalInput(1)
+//    private val intakeSwitch = DigitalInput(1)
     private val intakeCurrentMgr = CurrentManager({ RobotController.getBatteryVoltage()}, 7.5, 100, this)
 
     var wants = State.INTAKE
@@ -26,14 +23,10 @@ object Intake : Jawasystem() {
         set(input) {
             field = input
 
-            if(field) {
-                actuator.set(DoubleSolenoid.Value.kForward)
-            } else {
-                actuator.set(DoubleSolenoid.Value.kReverse)
-            }
+            actuator.set(setOut)
         }
-    var isIn = setOut
-            get() = !intakeSwitch.get()
+/*    var isIn = setOut
+            get() = !intakeSwitch.get()*/
 
     init { reset() }
 

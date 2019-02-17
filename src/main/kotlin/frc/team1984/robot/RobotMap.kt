@@ -22,18 +22,9 @@ object RobotMap {
     const val RIGHT_SPX_ID = 3
 
     //PCM
-    const val HATCH_DOUBLE_A = 0
-    const val HATCH_DOUBLE_B = 1
+    const val HATCH_SOLENOID = 7
 
-    const val INTAKE_DOUBLE_A = 2
-    const val INTAKE_DOUBLE_B = 3
+    const val INTAKE_SOLENOID = 1
 
-    const val SHIFTER_DOUBLE_A = 4
-    const val SHIFTER_DOUBLE_B = 5
-
-    private const val BROWNOUT_MAX_THRESHOLD = 11.0
-//    val pressure = PressureSwitch(PRESSURE_SWITCH)
-//    val pressureManager = CurrentManager({RobotController.getBatteryVoltage()}, BROWNOUT_MAX_THRESHOLD, 1500, pressure)
-
-
+    const val SHIFTER_SOLENOID = 2
     }

@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.*
 import edu.wpi.first.wpilibj.command.Scheduler
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import frc.team1984.lib.oi.XboxMap
+import frc.team1984.lib.sensors.PressureSwitch
 import frc.team1984.robot.belt.Belt
 import frc.team1984.robot.intake.Intake
 import frc.team1984.robot.drivetrain.Drivetrain
@@ -14,12 +15,15 @@ class Robot : TimedRobot() {
     companion object {
         val driverStation: DriverStation = DriverStation.getInstance()
         val scheduler: Scheduler = Scheduler.getInstance()
+        val pressure = PressureSwitch(0, 1)
         private val subsystemList = listOf(Drivetrain, Intake, DrumBrake, Belt)
     }
 
     override fun robotInit() {
         OI
         subsystemList.forEach { SmartDashboard.putData(it) }
+        pressure.isEnabled = true
+        pressure.launch()
     }
 
     override fun robotPeriodic() {
@@ -27,34 +31,27 @@ class Robot : TimedRobot() {
     }
 
     override fun autonomousInit() {
-
     }
 
     override fun autonomousPeriodic() {
-
     }
 
     override fun teleopInit() {
+        pressure.isEnabled = true
         scheduler.removeAll()
-//        RobotMap.pressure.isEnabled = true
-
     }
 
-    override fun teleopPeriodic() {
-        OI.Comp.start()
-        print("some gay shit")
-    }
+    override fun teleopPeriodic() { pressure.run() }
 
     override fun disabledInit() {
-
+        pressure.isEnabled = false
     }
 
     override fun disabledPeriodic() {
-
     }
 
     override fun testInit() {
-
+        pressure.isEnabled = true
     }
 
     override fun testPeriodic() {

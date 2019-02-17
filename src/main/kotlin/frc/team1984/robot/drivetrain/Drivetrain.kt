@@ -3,6 +3,7 @@ package frc.team1984.robot.drivetrain
 import edu.wpi.first.wpilibj.DoubleSolenoid
 import edu.wpi.first.wpilibj.SpeedControllerGroup
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX
+import edu.wpi.first.wpilibj.Solenoid
 import edu.wpi.first.wpilibj.drive.DifferentialDrive
 import frc.team1984.lib.Jawasystem
 import frc.team1984.lib.motion.pid.JawaDriveEncoder
@@ -18,7 +19,7 @@ object Drivetrain : Jawasystem() {
         private var rSRX = JawaDriveEncoder(RobotMap.RIGHT_SRX_ID, DriveConsts.kDTVals)
         private var rSPX = WPI_VictorSPX(RobotMap.RIGHT_SPX_ID)
 
-        private var shifter = DoubleSolenoid(RobotMap.SHIFTER_DOUBLE_A, RobotMap.SHIFTER_DOUBLE_B)
+        private var shifter = Solenoid(RobotMap.SHIFTER_SOLENOID)
 
         private val l = SpeedControllerGroup(lSRX, lSPX)
         private val r = SpeedControllerGroup(rSRX, rSPX)
@@ -38,7 +39,7 @@ object Drivetrain : Jawasystem() {
 
     override fun initDefaultCommand() {
         defaultCommand = ArcadeDriveCmd(
-                { -OI.Con1.getAxis(XboxMap.Axis.LEFT_Y) },
+                { OI.Con1.getAxis(XboxMap.Axis.LEFT_Y) },
                 { -OI.Con1.getAxis(XboxMap.Axis.RIGHT_X) })
     }
 
@@ -69,10 +70,10 @@ object Drivetrain : Jawasystem() {
     }
 
     fun shiftHigh() {
-        shifter.set(DoubleSolenoid.Value.kForward)
+        shifter.set(true)
     }
 
     fun shiftLow() {
-        shifter.set(DoubleSolenoid.Value.kReverse)
+        shifter.set(false)
     }
 }

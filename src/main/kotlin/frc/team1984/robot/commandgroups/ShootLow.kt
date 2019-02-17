@@ -10,9 +10,7 @@ import frc.team1984.robot.intake.commands.RunIntakeCmd
 class ShootLow : CommandGroup() {
     init {
         this.requires(Intake)
-        this.requires(Belt)
-
-        addParallel(RunIntakeCmd(IntakeConsts.FRONT_SHOOTLOW_SPEED, IntakeConsts.BACK_SHOOTLOW_SPEED))
-        addSequential(BeltCmd())
+        addParallel(RunIntakeCmd(IntakeConsts.FRONT_SHOOTLOW_SPEED, IntakeConsts.BACK_SHOOTLOW_SPEED, true))
+//        addSequential(BeltCmd())
     }
 }

@@ -17,7 +17,6 @@ import frc.team1984.robot.intake.commands.ManualIntakeCmd
 object OI {
     val Con1 = JawaXboxController(0)
     val Con2 = JawaXboxController(1)
-    val Comp = Compressor()
 
     init {
         //Driver 1
@@ -26,6 +25,7 @@ object OI {
         Con1.rbButton.whenPressed(commandify { Drivetrain.shiftHigh() })
         Con1.aButton.whenPressed(IntakeOutCmd())
         Con1.lbButton.whenPressed(IntakeInCmd())
+        Con1.bButton.toggleWhenPressed(DrumBrakeCmd())
         //Intake
         Con1.xButton.whenPressed(IntakeBall()) //Immediately after the ball has been intaked this will spit the ball either to go high or to go low
 

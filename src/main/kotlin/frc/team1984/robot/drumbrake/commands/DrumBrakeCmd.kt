@@ -10,7 +10,7 @@ class DrumBrakeCmd : Command() {
     }
 
     override fun execute() {
-        DrumBrake.isHold = true
+        DrumBrake.isHold = false
     }
     override fun isFinished() = false
     override fun end() { DrumBrake.isHold = false }

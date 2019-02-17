@@ -3,7 +3,7 @@ package frc.team1984.robot.intake.commands
 import edu.wpi.first.wpilibj.command.Command
 import frc.team1984.robot.intake.Intake
 
-class RunIntakeCmd(private val fSpeed: Double, private val bSpeed: Double) : Command("RunIntakeCmd") {
+class RunIntakeCmd(private val fSpeed: Double, private val bSpeed: Double, private val b: Boolean = false) : Command("RunIntakeCmd") {
     init {
         this.requires(Intake)
         this.isInterruptible = true
@@ -13,7 +13,7 @@ class RunIntakeCmd(private val fSpeed: Double, private val bSpeed: Double) : Com
         Intake.run(fSpeed, bSpeed)
     }
 
-    override fun  isFinished() = Intake.hasBall && Intake.wants == Intake.State.INTAKE
+    override fun  isFinished() = if(b) Intake.hasBall && Intake.wants == Intake.State.INTAKE else Intake.hasBall
 
     override fun end() {
         Intake.stop()
