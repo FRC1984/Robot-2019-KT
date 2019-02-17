@@ -36,13 +36,12 @@ class Robot : TimedRobot() {
 
     override fun teleopInit() {
         scheduler.removeAll()
-        RobotMap.pressure.isEnabled = true
+//        RobotMap.pressure.isEnabled = true
 
     }
 
     override fun teleopPeriodic() {
         OI.Comp.start()
-        RobotMap.pressure.run()
         print("some gay shit")
     }
 

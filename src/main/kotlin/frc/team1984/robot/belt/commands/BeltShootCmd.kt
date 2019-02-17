@@ -5,7 +5,7 @@ import frc.team1984.robot.belt.Belt
 import frc.team1984.robot.belt.Belt.stop
 import frc.team1984.robot.intake.Intake
 
-class BeltShootCmd() : Command() {
+class BeltShootCmd : Command() {
     init {
         this.requires(Belt)
 

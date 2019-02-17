@@ -38,7 +38,7 @@ object Drivetrain : Jawasystem() {
 
     override fun initDefaultCommand() {
         defaultCommand = ArcadeDriveCmd(
-                { OI.Con1.getAxis(XboxMap.Axis.LEFT_Y) },
+                { -OI.Con1.getAxis(XboxMap.Axis.LEFT_Y) },
                 { -OI.Con1.getAxis(XboxMap.Axis.RIGHT_X) })
     }
 

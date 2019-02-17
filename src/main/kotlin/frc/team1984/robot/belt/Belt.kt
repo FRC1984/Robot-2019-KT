@@ -11,8 +11,6 @@ object Belt : Jawasystem() {
     private val motor = Spark(RobotMap.BELT_MOTOR) //Spike gang
     private val dio = DigitalInput(2)
 
-    var ballAtTop = {!dio.get()}
-
     override fun initDefaultCommand() {
         defaultCommand = ManualBeltCmd()
     }

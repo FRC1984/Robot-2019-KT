@@ -10,10 +10,10 @@ class CurrentManager(val sourceFun: () -> Double, private val THRESHOLD: Double,
         launch()
     }
 
-    fun launch() = GlobalScope.launch {
+    fun launch() {} /* = GlobalScope.launch {
         while(sourceFun() < THRESHOLD) {
             subsystem.brownOut()
             delay(LENGTH)
         }
-    }
+    }*/
 }

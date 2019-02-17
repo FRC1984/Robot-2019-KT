@@ -16,10 +16,10 @@ object RobotMap {
     const val PRESSURE_SWITCH = 0
 
     //CAN
-    const val LEFT_SRX_ID = 2
-    const val LEFT_SPX_ID = 3
-    const val RIGHT_SRX_ID = 4
-    const val RIGHT_SPX_ID = 5
+    const val LEFT_SRX_ID = 4
+    const val LEFT_SPX_ID = 5
+    const val RIGHT_SRX_ID = 2
+    const val RIGHT_SPX_ID = 3
 
     //PCM
     const val HATCH_DOUBLE_A = 0
@@ -32,8 +32,8 @@ object RobotMap {
     const val SHIFTER_DOUBLE_B = 5
 
     private const val BROWNOUT_MAX_THRESHOLD = 11.0
-    val pressure = PressureSwitch(PRESSURE_SWITCH)
-    val pressureManager = CurrentManager({RobotController.getBatteryVoltage()}, BROWNOUT_MAX_THRESHOLD, 1500, pressure)
+//    val pressure = PressureSwitch(PRESSURE_SWITCH)
+//    val pressureManager = CurrentManager({RobotController.getBatteryVoltage()}, BROWNOUT_MAX_THRESHOLD, 1500, pressure)
 
 
     }
