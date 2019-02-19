@@ -10,8 +10,9 @@ class DrumBrakeCmd : Command() {
     }
 
     override fun execute() {
-        DrumBrake.isHold = false
+        DrumBrake.solenoid.set(true)
+
     }
     override fun isFinished() = false
-    override fun end() { DrumBrake.isHold = false }
+    override fun end() { DrumBrake.solenoid.set(false) }
 }

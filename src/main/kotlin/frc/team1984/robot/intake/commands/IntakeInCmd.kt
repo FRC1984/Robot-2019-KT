@@ -1,8 +1,13 @@
 package frc.team1984.robot.intake.commands
 
-import edu.wpi.first.wpilibj.command.InstantCommand
+import edu.wpi.first.wpilibj.command.Command
+
 import frc.team1984.robot.intake.Intake
 
-class IntakeInCmd : InstantCommand(){
-    override fun execute() { Intake.setOut = false }
+class IntakeInCmd : Command(){
+    init {
+        this.requires(Intake)
+    }
+    override fun execute() { Intake.solenoid.set(false) }
+    override fun isFinished() = Intake.isIn
 }

@@ -10,11 +10,11 @@ class ChooseShootCmd : ConditionalCommand(ShootHigh(), ShootLow()) {
         requires(Intake)
     }
     override fun condition(): Boolean {
-        when(Intake.wants) {
-            Intake.State.SHOOTHIGH -> {
+        when(Intake.nextAction) {
+            Intake.NextAction.SHOOTHIGH -> {
                 return true
             }
-            Intake.State.SHOOTLOW -> {
+            Intake.NextAction.SHOOTLOW -> {
                 return false
             }
             else -> { }

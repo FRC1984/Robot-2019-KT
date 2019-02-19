@@ -20,7 +20,7 @@ class PressureSwitch(relayPort: Int, switchPort: Int) : Jawasystem() {
         }
 
     fun run() { // For testing
-            if(switch.get()) this.comp.set(Relay.Value.kForward) else this.comp.set(Relay.Value.kOff)
+            if(!switch.get()) this.comp.set(Relay.Value.kForward) else this.comp.set(Relay.Value.kOff)
     }
     fun launch() {
         GlobalScope.launch {

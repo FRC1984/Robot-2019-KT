@@ -1,10 +1,8 @@
 package frc.team1984.robot
 
-import edu.wpi.first.wpilibj.Compressor
 import frc.team1984.lib.oi.JawaXboxController
 import frc.team1984.lib.oi.XboxMap
 import frc.team1984.lib.util.commandify
-import frc.team1984.robot.belt.commands.BeltCmd
 import frc.team1984.robot.belt.commands.BeltShootCmd
 import frc.team1984.robot.commandgroups.IntakeBall
 import frc.team1984.robot.drivetrain.Drivetrain
@@ -23,22 +21,20 @@ object OI {
         //Shifting
         Con1.lbButton.whenPressed(commandify { Drivetrain.shiftLow() })
         Con1.rbButton.whenPressed(commandify { Drivetrain.shiftHigh() })
-        Con1.aButton.whenPressed(IntakeOutCmd())
-        Con1.lbButton.whenPressed(IntakeInCmd())
-        Con1.bButton.toggleWhenPressed(DrumBrakeCmd())
+        //DrumBrake
+        Con1.aButton.toggleWhenPressed(DrumBrakeCmd())
         //Intake
         Con1.xButton.whenPressed(IntakeBall()) //Immediately after the ball has been intaked this will spit the ball either to go high or to go low
-
-        Con2.xButton.whenPressed(commandify { Intake.wants = Intake.State.SHOOTLOW })
-        Con2.bButton.whenPressed(commandify { Intake.wants = Intake.State.SHOOTHIGH })
+        Con1.leftDPad.whenPressed(IntakeInCmd())
+        Con1.rightDPad.whenPressed(IntakeOutCmd())
+        //Driver 2
+        Con2.xButton.whenPressed(commandify { Intake.nextAction = Intake.NextAction.SHOOTLOW })
+        Con2.bButton.whenPressed(commandify { Intake.nextAction = Intake.NextAction.SHOOTHIGH })
         Con2.aButton.whenPressed(BeltShootCmd()) //Cmd for shooting - this will stop the intake
 
         //Manual
-        Con2.lbButton.toggleWhenPressed(ManualIntakeCmd({Con2.getAxis(XboxMap.Axis.RT)}, {Con2.getAxis(XboxMap.Axis.LT)}))
+        Con2.lbButton.toggleWhenPressed(ManualIntakeCmd({Con2.getAxis(XboxMap.Axis.LEFT_Y)}, {Con2.getAxis(XboxMap.Axis.RIGHT_Y)}))
 
-
-        //DrumBrake
-        Con1.aButton.toggleWhenPressed(DrumBrakeCmd())
 
     }
 }

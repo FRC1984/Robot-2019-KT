@@ -7,15 +7,8 @@ import frc.team1984.lib.Jawasystem
 import frc.team1984.robot.RobotMap
 
 object DrumBrake : Jawasystem() {
-    private val actuator = Solenoid(RobotMap.HATCH_SOLENOID)
+    val solenoid = Solenoid(RobotMap.HATCH_SOLENOID) // True = Cylinder Out
 
-    var isHold = true
-        set(input) {
-            field = input
-
-            actuator.set(isHold)
-        }
-
-    override fun reset() { isHold = true }
+    override fun reset() { solenoid.set(true) }
     override fun initDefaultCommand() { }
 }

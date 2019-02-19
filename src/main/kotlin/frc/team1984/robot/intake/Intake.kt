@@ -3,30 +3,30 @@ package frc.team1984.robot.intake
 import edu.wpi.first.wpilibj.*
 import frc.team1984.lib.Jawasystem
 import frc.team1984.lib.oi.XboxMap
-import frc.team1984.lib.sensors.CurrentManager
 import frc.team1984.robot.OI
 import frc.team1984.robot.RobotMap
 
 object Intake : Jawasystem() {
-
-    private val actuator = Solenoid(RobotMap.INTAKE_SOLENOID)
     private val frontMotor = Spark(RobotMap.INTAKE_MOTOR)
     private val backMotor = Spark(RobotMap.INTAKE_MOTOR_2)
-    private val ballSwitch = DigitalInput(0)
-//    private val intakeSwitch = DigitalInput(1)
-    private val intakeCurrentMgr = CurrentManager({ RobotController.getBatteryVoltage()}, 7.5, 100, this)
+    private val ballSwitch = DigitalInput(RobotMap.BALL_SWITCH)
+    private val intakeSwitch = DigitalInput(RobotMap.INTAKE_SWITCH)
+//    private val intakeCurrentMgr = CurrentManager({ RobotController.getBatteryVoltage()}, 7.5, 100, this)
 
-    var wants = State.INTAKE
+    val solenoid = Solenoid(RobotMap.INTAKE_SOLENOID)
+
+    var nextAction: Intake.NextAction = NextAction.INTAKE
     var hasBall = false
-        get() = !ballSwitch.get()
-    var setOut = false
-        set(input) {
-            field = input
-
-            actuator.set(setOut)
+        get() {
+            field = !ballSwitch.get()
+            return field
         }
-/*    var isIn = setOut
-            get() = !intakeSwitch.get()*/
+
+    var isIn = true
+        get() {
+            field = !intakeSwitch.get()
+            return field
+        }
 
     init { reset() }
 
@@ -45,7 +45,7 @@ object Intake : Jawasystem() {
 
     override fun brownOut() = stop()
 
-    enum class State {
+    enum class NextAction {
         INTAKE,
         SHOOTHIGH,
         SHOOTLOW

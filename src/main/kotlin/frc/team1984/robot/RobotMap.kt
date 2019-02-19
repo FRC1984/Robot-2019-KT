@@ -1,10 +1,5 @@
 package frc.team1984.robot
 
-import edu.wpi.first.wpilibj.DriverStation
-import edu.wpi.first.wpilibj.RobotController
-import frc.team1984.lib.sensors.CurrentManager
-import frc.team1984.lib.sensors.PressureSwitch
-
 object RobotMap {
 
     //PWM
@@ -13,8 +8,14 @@ object RobotMap {
     const val BELT_MOTOR = 2
 
     //Relay
-    const val PRESSURE_SWITCH = 0
+    const val COMPRESSOR_SPIKE = 0
 
+    //DIO
+    const val BALL_SWITCH = 0
+    const val PRESSURE_SWITCH = 1
+    const val TOP_ULTRASONIC = 2
+    const val BOTTOM_ULTRASONIC   = 3
+    const val INTAKE_SWITCH = 4
     //CAN
     const val LEFT_SRX_ID = 4
     const val LEFT_SPX_ID = 5

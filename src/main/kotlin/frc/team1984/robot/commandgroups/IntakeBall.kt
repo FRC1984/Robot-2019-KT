@@ -13,7 +13,6 @@ class IntakeBall : CommandGroup() {
         this.requires(Intake)
         addSequential(IntakeOutCmd())
         addSequential(RunIntakeCmd(IntakeConsts.FRONT_INTAKING_SPEED, IntakeConsts.BACK_INTAKING_SPEED))
-        addParallel(IntakeInCmd())
         addSequential(ChooseShootCmd())
     }
 }

@@ -13,7 +13,7 @@ class RunIntakeCmd(private val fSpeed: Double, private val bSpeed: Double, priva
         Intake.run(fSpeed, bSpeed)
     }
 
-    override fun  isFinished() = if(b) Intake.hasBall && Intake.wants == Intake.State.INTAKE else Intake.hasBall
+    override fun  isFinished() = if(b) Intake.hasBall && Intake.nextAction == Intake.NextAction.INTAKE else Intake.hasBall
 
     override fun end() {
         Intake.stop()

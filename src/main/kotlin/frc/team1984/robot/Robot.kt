@@ -15,7 +15,7 @@ class Robot : TimedRobot() {
     companion object {
         val driverStation: DriverStation = DriverStation.getInstance()
         val scheduler: Scheduler = Scheduler.getInstance()
-        val pressure = PressureSwitch(0, 1)
+        val pressure = PressureSwitch(RobotMap.COMPRESSOR_SPIKE, RobotMap.PRESSURE_SWITCH)
         private val subsystemList = listOf(Drivetrain, Intake, DrumBrake, Belt)
     }
 
