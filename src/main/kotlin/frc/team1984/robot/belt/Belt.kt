@@ -9,11 +9,11 @@ import frc.team1984.robot.belt.commands.ManualBeltCmd
 
 object Belt : Jawasystem() {
     private val motor = Spark(RobotMap.BELT_MOTOR) //Spike gang
-    val ballAtTop = DigitalInput(RobotMap.TOP_ULTRASONIC)
-    val ballAtBottom = DigitalInput(RobotMap.BOTTOM_ULTRASONIC)
+    val ballAtBottom = DigitalInput(RobotMap.BOTTOM_ULTRASONIC) // False when ball there
+    val ballAtTop = DigitalInput(RobotMap.TOP_ULTRASONIC) // True when ball there
     var stopBall = false
         get() {
-            field = ballAtTop.get() || ballAtBottom.get()
+            field = ballAtTop.get() || !ballAtBottom.get()
             return field
         }
 
@@ -22,6 +22,8 @@ object Belt : Jawasystem() {
     }
 
     override fun reset() { stop() }
+
+    fun run(speed: Double) = motor.set(speed)
 
     fun forward() = motor.set(-1.0)
 

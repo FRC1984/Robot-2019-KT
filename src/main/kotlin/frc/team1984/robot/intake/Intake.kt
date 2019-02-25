@@ -5,12 +5,12 @@ import frc.team1984.lib.Jawasystem
 import frc.team1984.lib.oi.XboxMap
 import frc.team1984.robot.OI
 import frc.team1984.robot.RobotMap
+import frc.team1984.robot.intake.commands.ManualIntakeCmd
 
 object Intake : Jawasystem() {
     private val frontMotor = Spark(RobotMap.INTAKE_MOTOR)
     private val backMotor = Spark(RobotMap.INTAKE_MOTOR_2)
     private val ballSwitch = DigitalInput(RobotMap.BALL_SWITCH)
-    private val intakeSwitch = DigitalInput(RobotMap.INTAKE_SWITCH)
 //    private val intakeCurrentMgr = CurrentManager({ RobotController.getBatteryVoltage()}, 7.5, 100, this)
 
     val solenoid = Solenoid(RobotMap.INTAKE_SOLENOID)
@@ -22,15 +22,9 @@ object Intake : Jawasystem() {
             return field
         }
 
-    var isIn = true
-        get() {
-            field = !intakeSwitch.get()
-            return field
-        }
-
     init { reset() }
 
-    override fun initDefaultCommand() {  } //ManualCmd
+    override fun initDefaultCommand() { defaultCommand = ManualIntakeCmd({ OI.Con2.getAxis(XboxMap.Axis.LEFT_Y)}, { OI.Con2.getAxis(XboxMap.Axis.RIGHT_Y)}) } //ManualCmd
 
     override fun reset() { stop() }
 

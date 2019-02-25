@@ -3,7 +3,6 @@ package frc.team1984.robot
 import frc.team1984.lib.oi.JawaXboxController
 import frc.team1984.lib.oi.XboxMap
 import frc.team1984.lib.util.commandify
-import frc.team1984.robot.belt.commands.BeltShootCmd
 import frc.team1984.robot.commandgroups.IntakeBall
 import frc.team1984.robot.drivetrain.Drivetrain
 import frc.team1984.robot.drumbrake.commands.DrumBrakeCmd
@@ -30,10 +29,8 @@ object OI {
         //Driver 2
         Con2.xButton.whenPressed(commandify { Intake.nextAction = Intake.NextAction.SHOOTLOW })
         Con2.bButton.whenPressed(commandify { Intake.nextAction = Intake.NextAction.SHOOTHIGH })
-        Con2.aButton.whenPressed(BeltShootCmd()) //Cmd for shooting - this will stop the intake
-
         //Manual
-        Con2.lbButton.toggleWhenPressed(ManualIntakeCmd({Con2.getAxis(XboxMap.Axis.LEFT_Y)}, {Con2.getAxis(XboxMap.Axis.RIGHT_Y)}))
+        Con2.lbButton.whenPressed(ManualIntakeCmd({Con2.getAxis(XboxMap.Axis.LEFT_Y)}, {Con2.getAxis(XboxMap.Axis.RIGHT_Y)}))
 
 
     }

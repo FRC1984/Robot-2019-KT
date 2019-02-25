@@ -12,10 +12,9 @@ object RobotMap {
 
     //DIO
     const val BALL_SWITCH = 0
-    const val PRESSURE_SWITCH = 1
-    const val TOP_ULTRASONIC = 2
-    const val BOTTOM_ULTRASONIC   = 3
-    const val INTAKE_SWITCH = 4
+    const val BOTTOM_ULTRASONIC = 2
+    const val INTAKE_SWITCH = 3
+    const val TOP_ULTRASONIC = 1
     //CAN
     const val LEFT_SRX_ID = 4
     const val LEFT_SPX_ID = 5
